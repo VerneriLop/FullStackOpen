@@ -1,0 +1,9 @@
+
+OSA 3:
+1. https://dashboard.render.com
+2. Kirjaudu githubi tunnuksilla.
+3. Uusi web service
+4. Root directory: Osa3/harjoitus
+    - koska siellä on backendi ja frontista tehty build kansio.
+5. Build command: npm install
+6. Start command: npm start
