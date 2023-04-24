@@ -28,12 +28,24 @@ const Note = mongoose.model('Note', noteSchema)
 
 //luodaan skeemaa vastaava olio
 const note = new Note({
-  content: 'HTML is Easy',
+  content: 'MongoDB feels good',
   important: true,
 })
 
 //tallennetaan olio tietokantaan
+/*
 note.save().then(result => {
   console.log('note saved!')
   mongoose.connection.close()
+})
+*/
+
+//etsitään oliot
+//findin sisällä voisi olla esim: {important: true} jolloin hakee kaikki joissa important true
+Note.find({}).then(result => {
+    result.forEach(note => {
+      console.log(note)
+    })
+    //tämän on tärkeä olla promisen sisällä jotta yhteys ei sulkeudu liian aikaisin
+    mongoose.connection.close()
 })

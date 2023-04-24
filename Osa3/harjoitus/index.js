@@ -9,6 +9,8 @@ app.use(express.json());
 const cors = require('cors')
 app.use(cors())
 app.use(express.static('build')) //osaa tarjoilla staattista html sivua.
+require('dotenv').config()
+const Note = require('./models/note')
 
 let notes = [
     {
@@ -31,10 +33,13 @@ let notes = [
 app.get('/', (req, res) => {
     res.send('<h1>Hello World!</h1>')
 })
-  
+
+/*
 app.get('/api/notes', (req, res) => {
 res.json(notes)
 })
+*/
+
 
 app.get('/api/notes/:id', (request, response) => {
     const id = Number(request.params.id);
@@ -83,6 +88,42 @@ const body = request.body
     response.json(note)
 })
 
-const PORT = process.env.PORT || 3001
+//MONGODB OSIO
+/*
+const mongoose = require('mongoose')
+
+// ÄLÄ KOSKAAN TALLETA SALASANOJA GitHubiin!
+const password = process.argv[2]
+
+const url =
+    `mongodb+srv://fullstack:${password}@cluster0.e6wu6fk.mongodb.net/noteApp?retryWrites=true&w=majority`
+
+mongoose.set('strictQuery',false)
+mongoose.connect(url)
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
+noteSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+      returnedObject.id = returnedObject._id.toString()
+      delete returnedObject._id
+      delete returnedObject.__v
+    }
+})
+
+const Note = mongoose.model('Note', noteSchema)
+*/
+
+app.get('/api/notes', (request, response) => {
+    Note.find({}).then(notes => {
+      response.json(notes)
+    })
+})
+
+
+const PORT = process.env.PORT
 app.listen(PORT)
 console.log(`Server running on port ${PORT}`)
