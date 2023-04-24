@@ -12,7 +12,7 @@ app.use(express.static('build')) //osaa tarjoilla staattista html sivua.
 require('dotenv').config()
 const Note = require('./models/note')
 
-let notes = [
+/*let notes = [
     {
       id: 1,
       content: "HTML is easy",
@@ -28,7 +28,7 @@ let notes = [
       content: "GET and POST are the most important methods of HTTP protocol",
       important: true
     }
-]
+]*/
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello World!</h1>')
@@ -40,7 +40,7 @@ res.json(notes)
 })
 */
 
-
+/*
 app.get('/api/notes/:id', (request, response) => {
     const id = Number(request.params.id);
     console.log(id);
@@ -87,6 +87,7 @@ const body = request.body
 
     response.json(note)
 })
+*/
 
 //MONGODB OSIO
 /*
