@@ -1,3 +1,6 @@
+OSA3 package.json:
+ - npm run build:ui: poistaa build kansion. Navigoi fronttiin. Tekee buildin ja kopioi build kansion backendiin.
+ - npm run deploy:full: ajaa build:ui komennon ja vie myös muutokset gittiin.
 
 OSA 3 render:
 1. https://dashboard.render.com
