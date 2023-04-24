@@ -1,5 +1,5 @@
 
-OSA 3:
+OSA 3 render:
 1. https://dashboard.render.com
 2. Kirjaudu githubi tunnuksilla.
 3. Uusi web service
@@ -7,3 +7,7 @@ OSA 3:
     - koska siellä on backendi ja frontista tehty build kansio.
 5. Build command: npm install
 6. Start command: npm start
+7. Jos renderissä ei ala uudelleen buildaus ja deploy niin laitettava manuaalisti oikeasta yläkulmasta.
+
+OSA3 Mongodb:
+1. node mongo.js <salasana>

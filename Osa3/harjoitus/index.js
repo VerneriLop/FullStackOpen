@@ -4,6 +4,7 @@ app.use(express.json());
 //web-sovelluksen selaimessa suoritettava JavaScript-koodi saa oletusarvoisesti kommunikoida 
 //vain samassa originissa olevan palvelimen kanssa. Koska palvelin on localhostin portissa 3001 
 //ja frontend localhostin portissa 3000, niiden origin ei ole sama.
+//https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy
 //Voimme sallia muista origineista tulevat pyynnöt käyttämällä Noden cors-middlewarea
 const cors = require('cors')
 app.use(cors())
