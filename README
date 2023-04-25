@@ -14,3 +14,7 @@ OSA 3 render:
 
 OSA3 Mongodb:
 1. node mongo.js <salasana>
+
+OSA3 Eslint:
+- eslintin ajo: npx eslint index.js
+- tehty myös skripti
