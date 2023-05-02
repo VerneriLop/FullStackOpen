@@ -28,3 +28,20 @@
       title
     }
 }`
+
+8.5
+`query {
+    allBooks(genre: "refactoring") {
+      title
+      author
+    }
+}`
+
+tai
+
+`query {
+    allBooks(author: "Robert Martin", genre: "refactoring") {
+      title
+      author
+    }
+}`
