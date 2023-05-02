@@ -85,3 +85,13 @@ ja
       bookCount
     }
 }`
+
+8.7
+
+//palauttaa null jos Reijo Mäki nimistä henkilöä ei löydy ja asettaa syntymävuoden jos löytyy
+`mutation {
+    editAuthor(name: "Reijo Mäki", setBornTo: 1958) {
+      name
+      born
+    }
+}`
