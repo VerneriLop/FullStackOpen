@@ -45,3 +45,43 @@ tai
       author
     }
 }`
+
+8.6
+//lisätään vanhalle kirjailijalle uusi kirja
+`mutation {
+    addBook(
+      title: "NoSQL Distilled",
+      author: "Martin Fowler",
+      published: 2012,
+      genres: ["database", "nosql"]
+    ) {
+      title,
+      author
+    }
+}`
+
+ja
+
+//lisätään uudelle kirjailijalle uusi kirja
+`mutation {
+    addBook(
+      title: "Pimeyden tango",
+      author: "Reijo Mäki",
+      published: 1997,
+      genres: ["crime"]
+    ) {
+      title,
+      author
+    }
+}`
+
+ja
+
+//haetaan kaikki niin nähdään onnistuiko aikaisemmat
+`query {
+    allAuthors {
+      name
+      born
+      bookCount
+    }
+}`
