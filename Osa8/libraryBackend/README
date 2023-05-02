@@ -21,3 +21,10 @@
       bookCount
     }
 }`
+
+8.4
+`query {
+    allBooks(author: "Robert Martin") {
+      title
+    }
+}`
