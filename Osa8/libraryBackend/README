@@ -1,0 +1,23 @@
+8.1
+`query {
+    bookCount
+    authorCount
+}`
+
+8.2
+`query {
+    allBooks { 
+      title 
+      author
+      published 
+      genres
+    }
+}`
+
+8.3
+`query {
+    allAuthors {
+      name
+      bookCount
+    }
+}`
