@@ -102,16 +102,18 @@ const typeDefs = `
     dummy: Int
     authorCount: Int!
     bookCount: Int!
-    allBooks: [book!]!
+    allBooks: [Book!]!
+    allAuthors: [Author!]!
   }
 
   type Author {
     name: String!
     id: ID!
     born: Int
+    bookCount: Int!
   }
 
-  type book {
+  type Book {
     title: String!
     published: Int!
     author: String!
@@ -126,6 +128,15 @@ const resolvers = {
     authorCount: () => authors.length,
     bookCount: () => books.length,
     allBooks: () => books,
+    allAuthors: () => {
+        return authors.map(author => {
+            const bookCount = books.filter(book => book.author === author.name).length
+            return {
+              ...author,
+              bookCount
+            }
+        })
+    }
   }
 }
 
