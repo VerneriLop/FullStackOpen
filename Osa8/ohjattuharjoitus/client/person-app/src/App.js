@@ -1,38 +1,23 @@
 import { gql, useQuery } from '@apollo/client'
-
-const ALL_PERSONS = gql`
-  query {
-    allPersons  {
-      name
-      phone
-      id
-    }
-  }
-`
-
-const Persons = ({ persons }) => {
-  return (
-    <div>
-      <h2>Persons</h2>
-      {persons.map(p =>
-        <div key={p.name}>
-          {p.name} {p.phone}
-        </div>  
-      )}
-    </div>
-  )
-}
+import PersonForm from './components/PersonForm'
+import Persons from './components/Persons'
+import { ALL_PERSONS } from './queries'
 
 
 const App = () => {
-  const result = useQuery(ALL_PERSONS)
+  const result = useQuery(ALL_PERSONS, {
+    pollInterval: 2000 //2 sec välein hakee tiedot. Päivittyy kaikilla, mutta turhan paljon tietoliikennettä.
+  })
 
   if (result.loading)  {
     return <div>loading...</div>
   }
 
   return (
-    <Persons persons={result.data.allPersons}/>
+    <>
+      <Persons persons={result.data.allPersons}/>
+      <PersonForm/>
+    </>
   )
 }
 
