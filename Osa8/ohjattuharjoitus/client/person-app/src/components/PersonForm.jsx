@@ -1,18 +1,27 @@
 import { useState } from 'react'
-import { gql, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { CREATE_PERSON, ALL_PERSONS } from '../queries'
 
 
-const PersonForm = () => {
+const PersonForm = ({setError}) => {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [street, setStreet] = useState('')
   const [city, setCity] = useState('')
 
-  const [ createPerson ] = useMutation(CREATE_PERSON/*, {
+  const [ createPerson ] = useMutation(CREATE_PERSON, {
     //jos lisätään uusi person niin hakee kaikki uudestaan ja päivittää apolloclientin välimuistin. Miinus: Ei päivity muilla käyttäjillä
-    refetchQueries: [ { query: ALL_PERSONS } ]
-  }*/)
+    refetchQueries: [ { query: ALL_PERSONS } ],
+    onError: (error) => {
+        console.log(error)
+        console.log(error.graphQLErrors[0].message)
+        console.log(error.graphQLErrors[0].extensions)
+        console.log(error.graphQLErrors[0].extensions.error)
+        //const errors = error.graphQLErrors[0].extensions.error.errors
+        //const messages = Object.values(errors).map(e => e.message).join('\n')
+        setError(error.graphQLErrors[0].message)
+    }
+  })
 
   const submit = async (event) => {
     event.preventDefault()
